@@ -89,7 +89,7 @@ $ cmake . -B wn5 -G "Unix Makefiles" \
   -DCMAKE_TOOLCHAIN_FILE=toolchain.wn5.cmake \
   -DPAHO_BUILD_SHARED=TRUE \
   -DPAHO_WITH_SSL=TRUE \
-  -DCMAKE_PREFIX_PATH=/home/youngho/workspace/TID600R_VWF/wn5/bsp/rootfilesystem/nfsroot/wn5/usr
+  -DCMAKE_PREFIX_PATH=/toolchain/bsp/rootfilesystem/nfsroot/wn5/usr
 $ cmake --build wn5 --config Release --target install
 ```
 
