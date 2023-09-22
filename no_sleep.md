@@ -1,4 +1,4 @@
-windows no sleep script using vbs
+A simple VBScript that will stop a computer from going to screen saver or lock screen
 
 ```
 ' Multiple references were used to create this, but the closest is:
