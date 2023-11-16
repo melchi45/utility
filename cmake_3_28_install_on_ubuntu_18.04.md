@@ -1,4 +1,4 @@
-
+# install new cmake
 
 ```
 version=3.28
@@ -13,3 +13,6 @@ wget https://cmake.org/files/v$version/cmake-$version.$build-$os-x86_64.sh
 mkdir -p ~/.local
 sh cmake-$version.$build-$os-x86_64.sh --prefix=${HOME}/.local --include-subdir=${HOME}/.local --exclude-subdir=${HOME}/.local
 ```
+
+# reference alternatives for cmake
+https://github.com/melchi45/utility/blob/main/update-my-alternatives.md
