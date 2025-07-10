@@ -1,0 +1,40 @@
+ssh key 생성
+ssh-keygen -t rsa -b 4096 -C "melchi45@gmail.com"
+
+ssh key 복사
+cat ~/.ssh/id_rsa.pub
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\young.ho.kim/.ssh/id_rsa): C:\Users\young.ho.kim/.ssh/id_rsa_github
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\young.ho.kim/.ssh/id_rsa_github
+Your public key has been saved in C:\Users\young.ho.kim/.ssh/id_rsa_github.pub
+The key fingerprint is:
+SHA256:########################################### melchi45@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|      .=Bo .o+o+ |
+|     .o==o .*=O o|
+|      oo=. +oX.. |
+|     . =  =o+o+  |
+|      E S o=++.  |
+|       . . +..o  |
+|          . .o   |
+|                 |
+|                 |
++----[SHA256]-----+
+
+
+github 접속
+githhub 우측 프로필 >  Settings > SSH and GPG keys
+New SSH Key 클릭 > Title 설정 > Authentication key > 상단 "ssh key" 의 내역을 붙여넣기
+
+ssh 로 github접속 테스트
+ssh -T git@github.com
+
+ssh로 github repository 접속 하는 방법
+git remote set-url origin git@github.com:melchi45/repository.git
+
+예제:
+git remote set-url origin git@github.com:melchi45/gdbserver_for_cross_compiler.git
