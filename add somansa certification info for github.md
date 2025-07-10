@@ -13,6 +13,15 @@ git config --global http.sslCAInfo "C:/path/to/your/certificate.crt"
 
 Replace the path with the actual location of the certificate file.
 
+해당 내역은 ~/.gitconfig 파일에서 추가된 내역이 확인 가능하다.
+```
+[user]
+    ...
+
+[http]
+	sslCAInfo = C:/path/to/your/certificate.crt
+```
+
 ## ⚠️ Option 2: Disable SSL Verification (Not Recommended)
 If you're in a trusted environment and just need a quick workaround:
 
