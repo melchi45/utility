@@ -26,3 +26,62 @@ The --enable-targets=all flag ensures support for multiple architectures includi
 /opt/gdb-13.2/bin/gdb --version
 ldd /opt/gdb-13.2/bin/gdb | grep -E 'gmp|mpfr|mpc'
 ```
+
+### 🖥️ VS Code Configuration for Remote AArch64 Debugging
+Create or edit .vscode/launch.json in your project folder:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Remote Debug (AArch64)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/myapp",  // Local binary with debug symbols
+      "miDebuggerPath": "/opt/gdb-13.2/bin/gdb",  // Path to GDB 13.2
+      "miDebuggerServerAddress": "192.168.214.34:1234",  // Remote gdbserver address
+      "cwd": "${workspaceFolder}",
+      "setupCommands": [
+        {
+          "description": "Set architecture to AArch64",
+          "text": "set architecture aarch64",
+          "ignoreFailures": false
+        },
+        {
+          "description": "Load symbol file",
+          "text": "file ${workspaceFolder}/myapp",
+          "ignoreFailures": false
+        }
+      ],
+      "stopAtEntry": true,
+      "externalConsole": false
+    }
+  ]
+}
+```
+
+### 🌐 Running gdbserver on the Remote AArch64 Device
+## 1. Transfer the target binary
+Copy the debug-enabled binary (myapp) to the remote device:
+
+```bash
+scp myapp user@remote-device:/home/user/
+```
+
+## 2. Launch gdbserver on the remote device
+```bash
+gdbserver :1234 ./myapp
+```
+Or attach to a running process:
+
+```bash
+gdbserver :1234 --attach <PID>
+```
+
+## 3. Optional: Use SSH port forwarding
+If direct access to port 1234 is blocked:
+
+```bash
+ssh -L 1234:localhost:1234 user@remote-device
+```
