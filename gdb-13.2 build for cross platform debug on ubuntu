@@ -1,0 +1,28 @@
+### Building GDB 13.2 with AArch64 and GMP/MPFR/MPC Support on Ubuntu 18.04
+## 1. Install required dependencies
+```bash
+sudo apt update
+sudo apt install build-essential texinfo libncurses-dev python3-dev zlib1g-dev \
+                 libgmp-dev libmpfr-dev libmpc-dev
+```
+These libraries enable advanced math support and expression parsing in GDB.
+
+## 2. Download and extract GDB source
+```bash
+wget https://ftp.gnu.org/gnu/gdb/gdb-13.2.tar.gz
+tar -xvzf gdb-13.2.tar.gz
+cd gdb-13.2
+```
+## 3. Configure and build GDB with multiarch support
+```bash
+./configure --prefix=/opt/gdb-13.2 --enable-targets=all \
+            --with-gmp --with-mpfr --with-mpc
+make -j$(nproc)
+sudo make install
+The --enable-targets=all flag ensures support for multiple architectures including AArch64.
+```
+## 4. Verify installation
+```bash
+/opt/gdb-13.2/bin/gdb --version
+ldd /opt/gdb-13.2/bin/gdb | grep -E 'gmp|mpfr|mpc'
+```
